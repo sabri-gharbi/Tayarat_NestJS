@@ -1,10 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { AircraftModel } from 'src/aircraft-model/entities/aircraft-model.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'manufacturer' })
 export class Manufacturer {
   @PrimaryGeneratedColumn()
   id: number;
-  @Column()
+  @Column({ nullable: true })
   companyName: string;
   @Column({ nullable: true })
   country: string;
@@ -38,4 +39,7 @@ export class Manufacturer {
   provider: boolean;
   @Column({ nullable: true })
   customer: boolean;
+
+  @OneToMany(() => AircraftModel, (aircraftModel) => aircraftModel.company)
+  aircraftModels: AircraftModel[];
 }

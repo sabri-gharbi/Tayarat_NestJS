@@ -20,10 +20,10 @@ export class ManufacturerService {
   //get one
   async findOne(id: number) {
     const manufacturer = await this.manufacturerRepository.findOne(id);
-    if (manufacturer) {
-      return manufacturer;
+    if (!manufacturer) {
+      throw new HttpException('manufacturer not found', HttpStatus.NOT_FOUND);
     }
-    throw new HttpException('manufacturer not found', HttpStatus.NOT_FOUND);
+    return manufacturer;
   }
 
   //create
@@ -42,7 +42,10 @@ export class ManufacturerService {
       updateManufacturerDto,
     );
     if (!updateManufacturer.affected) {
-      throw new HttpException('manufacturer not found', HttpStatus.NOT_FOUND);
+      throw new HttpException(
+        'Internal server erro',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
     }
     return this.findOne(id);
   }
@@ -51,7 +54,11 @@ export class ManufacturerService {
   async remove(id: number) {
     const deletedDto = await this.manufacturerRepository.delete(id);
     if (!deletedDto.affected) {
-      throw new HttpException('manufacturer not found', HttpStatus.NOT_FOUND);
+      throw new HttpException(
+        'Internal server erro',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
     }
+    return id;
   }
 }
