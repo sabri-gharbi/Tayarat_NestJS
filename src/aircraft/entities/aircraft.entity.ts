@@ -32,6 +32,8 @@ export class Aircraft {
   @Column({ nullable: true })
   acceptanceDate: Date;
 
-  @ManyToOne(() => AircraftModel, (AircraftModel) => AircraftModel.aircrafts)
+  @ManyToOne(() => AircraftModel, (AircraftModel) => AircraftModel.aircrafts, {
+    eager: true,
+  })
   model: AircraftModel;
 }

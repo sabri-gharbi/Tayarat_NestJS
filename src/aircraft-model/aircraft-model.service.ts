@@ -27,12 +27,12 @@ export class AircraftModelService {
   }
 
   // get one
-  findOne(id: number) {
-    const aircraftModel = this.aircraftModelRepository.findOne(id);
-    if (!aircraftModel) {
-      throw new HttpException('aircraftModel not found', HttpStatus.NOT_FOUND);
+  async findOne(id: number) {
+    const aircraftModel = await this.aircraftModelRepository.findOne(id);
+    if (aircraftModel) {
+      return aircraftModel;
     }
-    return aircraftModel;
+    throw new HttpException('aircraftModel not found', HttpStatus.NOT_FOUND);
   }
 
   // update

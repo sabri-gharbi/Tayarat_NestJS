@@ -19,7 +19,7 @@ export class AircraftService {
   }
 
   findAll() {
-    return this.aircraftRepository.find();
+    return this.aircraftRepository.find({ loadEagerRelations: true });
   }
 
   async findOne(id: number) {

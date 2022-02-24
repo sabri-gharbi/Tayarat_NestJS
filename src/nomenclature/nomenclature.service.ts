@@ -56,4 +56,16 @@ export class NomenclatureService {
     }
     return id;
   }
+
+  async checkPn(pn: string) {
+    const nomenclature = await this.nomeclatureRepository.findOne({ pn });
+    if (
+      nomenclature &&
+      nomenclature.nlaCode === true &&
+      (nomenclature.equipmentType === '5' || nomenclature.equipmentType === '6')
+    ) {
+      return nomenclature.id;
+    }
+    return false;
+  }
 }

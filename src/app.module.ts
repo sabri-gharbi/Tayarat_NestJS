@@ -7,6 +7,8 @@ import { ManufacturerModule } from './manufacturer/manufacturer.module';
 import { AircraftModelModule } from './aircraft-model/aircraft-model.module';
 import { AircraftModule } from './aircraft/aircraft.module';
 import { NomenclatureModule } from './nomenclature/nomenclature.module';
+import { NomenclatureTypeModule } from './nomenclature-type/nomenclature-type.module';
+import { PieceModule } from './piece/piece.module';
 
 @Module({
   imports: [
@@ -16,6 +18,8 @@ import { NomenclatureModule } from './nomenclature/nomenclature.module';
     AircraftModelModule,
     AircraftModule,
     NomenclatureModule,
+    NomenclatureTypeModule,
+    PieceModule,
   ],
   controllers: [AppController],
   providers: [AppService],

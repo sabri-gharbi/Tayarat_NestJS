@@ -55,7 +55,7 @@ export class CreateNomenclatureDto {
   dateHourCreation: Date;
   dateHourUpdate: Date;
   containsModel: boolean;
-  nlacode: boolean;
+  nlaCode: boolean;
   hazardousMaterial: boolean;
   specialTransportCondition: boolean;
   specialStorageCondition: boolean;

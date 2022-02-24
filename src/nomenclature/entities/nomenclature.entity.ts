@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { NomenclatureType } from 'src/nomenclature-type/entities/nomenclature-type.entity';
+import { Piece } from 'src/piece/entities/piece.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'nomenclature' })
 export class Nomenclature {
@@ -6,7 +8,7 @@ export class Nomenclature {
   id: number;
   @Column({ nullable: true })
   pn: string;
-  @Column({ nullable: true })
+  @Column({ nullable: true, unique: true })
   partNumber: string;
   @Column({ nullable: true })
   manufacturerCode: string;
@@ -111,7 +113,7 @@ export class Nomenclature {
   @Column({ nullable: true })
   containsModel: boolean;
   @Column({ nullable: true })
-  nlacode: boolean;
+  nlaCode: boolean;
   @Column({ nullable: true })
   hazardousMaterial: boolean;
   @Column({ nullable: true })
@@ -130,4 +132,13 @@ export class Nomenclature {
   calendarFollowUp: boolean;
   @Column({ nullable: true })
   referenceBlackList: boolean;
+
+  @OneToMany(
+    () => NomenclatureType,
+    (nomenclatureType) => nomenclatureType.nomenclature,
+  )
+  nomenclatureTypes: NomenclatureType[];
+
+  @OneToMany(() => Piece, (piece) => piece.serialNumber)
+  pieces: Piece[];
 }

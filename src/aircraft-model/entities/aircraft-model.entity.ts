@@ -21,7 +21,11 @@ export class AircraftModel {
   @Column({ nullable: true })
   variant: string;
 
-  @ManyToOne(() => Manufacturer, (manufacturer) => manufacturer.aircraftModels)
+  @ManyToOne(
+    () => Manufacturer,
+    (manufacturer) => manufacturer.aircraftModels,
+    { eager: true },
+  )
   company: Manufacturer;
   @OneToMany(() => Aircraft, (aircraft) => aircraft.model)
   aircrafts: Aircraft[];

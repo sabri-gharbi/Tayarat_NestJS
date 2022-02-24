@@ -42,4 +42,9 @@ export class NomenclatureController {
   remove(@Param('id') id: string) {
     return this.nomenclatureService.remove(+id);
   }
+
+  @Get('/pn/:pn')
+  checkPn(@Param('pn') pn: string) {
+    return this.nomenclatureService.checkPn(pn);
+  }
 }
