@@ -13,13 +13,16 @@ export class NomenclatureType {
   id: number;
   @Column()
   structureNumber: string;
+  @Column()
+  levelInStructure: number;
+  @Column()
+  removal: boolean;
   @Column({ nullable: true })
   quantity: number;
 
   @ManyToOne(
     () => Nomenclature,
     (nomenclature) => nomenclature.nomenclatureTypes,
-    { eager: true },
   )
   nomenclature: Nomenclature;
 

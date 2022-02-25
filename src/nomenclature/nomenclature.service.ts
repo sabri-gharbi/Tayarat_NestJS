@@ -66,6 +66,6 @@ export class NomenclatureService {
     ) {
       return nomenclature.id;
     }
-    return false;
+    return 0;
   }
 }
