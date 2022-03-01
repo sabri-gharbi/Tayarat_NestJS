@@ -22,13 +22,13 @@ export class NomenclatureTypeService {
 
   findAll() {
     return this.nomeclatureTypeRepository.find({
-      relations: ['higherNomenclature', 'nomenclature'],
+      relations: ['higherNomenclature'],
     });
   }
 
   async findOne(id: number) {
     const nomenclature = await this.nomeclatureTypeRepository.findOne(id, {
-      relations: ['higherNomenclature', 'nomenclature'],
+      relations: ['higherNomenclature'],
     });
     if (!nomenclature) {
       throw new HttpException('nomenclature not found', HttpStatus.NOT_FOUND);

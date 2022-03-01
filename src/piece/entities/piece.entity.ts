@@ -1,5 +1,13 @@
+import { Ensemble } from 'src/ensemble/entities/ensemble.entity';
+import { Kardex } from 'src/kardex/entities/kardex.entity';
 import { Nomenclature } from 'src/nomenclature/entities/nomenclature.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity({ name: 'piece' })
 export class Piece {
@@ -98,4 +106,10 @@ export class Piece {
     eager: true,
   })
   partNumber: Nomenclature;
+
+  @OneToMany(() => Ensemble, (ensemble) => ensemble.serialNumber)
+  ensembles: Ensemble[];
+
+  @OneToMany(() => Kardex, (kardex) => kardex.serialNumber)
+  kardexes: Kardex[];
 }

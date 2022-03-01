@@ -23,6 +23,7 @@ export class NomenclatureType {
   @ManyToOne(
     () => Nomenclature,
     (nomenclature) => nomenclature.nomenclatureTypes,
+    { eager: true },
   )
   nomenclature: Nomenclature;
 

@@ -1,5 +1,12 @@
 import { AircraftModel } from 'src/aircraft-model/entities/aircraft-model.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Kardex } from 'src/kardex/entities/kardex.entity';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity({ name: 'aircraft' })
 export class Aircraft {
@@ -36,4 +43,7 @@ export class Aircraft {
     eager: true,
   })
   model: AircraftModel;
+
+  @OneToMany(() => Kardex, (Kardex) => Kardex.aircraft)
+  kardexes: Kardex[];
 }

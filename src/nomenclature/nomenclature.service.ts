@@ -33,11 +33,11 @@ export class NomenclatureService {
   }
 
   async update(id: number, updateNomenclatureDto: UpdateNomenclatureDto) {
-    const updateManufacturer = await this.nomeclatureRepository.update(
+    const updateNomenclature = await this.nomeclatureRepository.update(
       id,
       updateNomenclatureDto,
     );
-    if (!updateManufacturer.affected) {
+    if (!updateNomenclature.affected) {
       throw new HttpException(
         'internal server error',
         HttpStatus.INTERNAL_SERVER_ERROR,
