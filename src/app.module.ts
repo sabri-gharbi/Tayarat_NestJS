@@ -10,7 +10,6 @@ import { NomenclatureModule } from './nomenclature/nomenclature.module';
 import { NomenclatureTypeModule } from './nomenclature-type/nomenclature-type.module';
 import { PieceModule } from './piece/piece.module';
 import { KardexModule } from './kardex/kardex.module';
-import { FilesModule } from './files/files.module';
 import { EnsembleModule } from './ensemble/ensemble.module';
 
 @Module({
@@ -24,7 +23,6 @@ import { EnsembleModule } from './ensemble/ensemble.module';
     NomenclatureTypeModule,
     PieceModule,
     KardexModule,
-    FilesModule,
     EnsembleModule,
   ],
   controllers: [AppController],

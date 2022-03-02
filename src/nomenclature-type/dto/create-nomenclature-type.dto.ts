@@ -10,13 +10,14 @@ import { NomenclatureType } from '../entities/nomenclature-type.entity';
 
 export class CreateNomenclatureTypeDto {
   @IsNotEmpty()
-  @IsString()
-  structureNumber: string;
-  @IsNotEmpty()
   nomenclature: Nomenclature;
   @IsNotEmpty()
   @IsNumber()
   levelInStructure: number;
+  @IsOptional()
+  @IsNotEmpty()
+  @IsString()
+  structureNumber: string;
   @IsOptional()
   @IsNotEmpty()
   higherNomenclature: NomenclatureType;

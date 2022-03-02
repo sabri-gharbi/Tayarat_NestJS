@@ -12,11 +12,11 @@ export class NomenclatureType {
   @PrimaryGeneratedColumn()
   id: number;
   @Column()
-  structureNumber: string;
-  @Column()
   levelInStructure: number;
-  @Column()
+  @Column({ nullable: true })
   removal: boolean;
+  @Column({ nullable: true })
+  structureNumber: string;
   @Column({ nullable: true })
   quantity: number;
 
